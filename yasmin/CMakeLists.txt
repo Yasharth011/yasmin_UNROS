@@ -6,10 +6,6 @@ if(NOT CMAKE_CXX_STANDARD)
   set(CMAKE_CXX_STANDARD 17)
 endif()
 
-# Find dependencies
-find_package(ament_cmake REQUIRED)
-find_package(ament_cmake_python REQUIRED)
-
 # C++
 include_directories(src)
 include_directories(include)
@@ -39,25 +35,3 @@ install(TARGETS ${PROJECT_NAME}
 install(DIRECTORY include/
   DESTINATION include/${PROJECT_NAME}
 )
-
-ament_export_include_directories("include/${PROJECT_NAME}")
-ament_export_libraries(${PROJECT_NAME})
-ament_export_targets(${PROJECT_NAME})
-ament_export_dependencies(${DEPENDENCIES_PACKAGE})
-
-
-# Python
-ament_python_install_package(${PROJECT_NAME})
-
-# Tests
-install(
-  DIRECTORY tests/python/
-  DESTINATION pytests/${PROJECT_NAME}
-)
-
-install(
-  PROGRAMS tests/run_pytests.sh
-  DESTINATION lib/${PROJECT_NAME}
-)
-
-ament_package()
