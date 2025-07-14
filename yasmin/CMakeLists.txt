@@ -32,10 +32,6 @@ install(TARGETS ${PROJECT_NAME}
   RUNTIME DESTINATION bin
 )
 
-# install(DIRECTORY include/
-#   DESTINATION include
-# )
-
 install(EXPORT ${PROJECT_NAME}
 	FILE ${PROJECT_NAME}.cmake
 	DESTINATION lib/cmake/${PROJECT_NAME})
