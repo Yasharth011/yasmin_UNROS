@@ -32,6 +32,20 @@ install(TARGETS ${PROJECT_NAME}
   RUNTIME DESTINATION bin
 )
 
-install(DIRECTORY include/
-  DESTINATION include
-)
+# install(DIRECTORY include/
+#   DESTINATION include
+# )
+
+install(EXPORT ${PROJECT_NAME}
+	FILE ${PROJECT_NAME}.cmake
+	DESTINATION lib/cmake/${PROJECT_NAME})
+
+include(CMakePackageConfigHelpers)
+
+write_basic_package_version_file(
+    "yasminConfigVersion.cmake"
+    VERSION ${yasmin_VERSION}
+    COMPATIBILITY AnyNewerVersion)
+
+install(FILES "yasminConfig.cmake" "${CMAKE_CURRENT_BINARY_DIR}/yasminConfigVersion.cmake"
+    DESTINATION lib/cmake/yasmin)
